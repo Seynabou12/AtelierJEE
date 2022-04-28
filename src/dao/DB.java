@@ -13,45 +13,60 @@ public class DB
     // pour les resultats de la requéte type mise à jour (update delete
     private int ok;
 
-    public  void getConnection(){
 
+    // Ouvrir la Connection à la base
+
+    public  void getConnection()
+
+    {
         String url = "jdbc:mysql://localhost:3306/atelierJEE";
         String user = "root";
         String password = "";
 
-        try{
-
+        try
+        {
             // forName accéde à la classe driver
             Class.forName("com.mysql.jdbc.Driver"); //ajout de l'API jdbc dans l'application
+            // Ouvir la connexion à la base
             cnx = DriverManager.getConnection(url,user,password);
-        }catch (Exception ex){
+        }catch (Exception ex)
+        {
             ex.printStackTrace();
         }
     }
 
-    // method init prépare permet de preparer nos requetes
+    // method init prépare permet d'initialiser pour préparer la requete
     public void initPrepar(String sql)
     {
-        try { //pour gerer les exeptions
+        try
+        {
+            //Ouverture de la Connexion
             getConnection();
+
+            // Initialiser l'exécution de la requéte
             pstm = cnx.prepareStatement(sql);
+
         }catch (Exception ex){
             ex.printStackTrace();
         }
     }
 
     // exécution des requetes de type selecte
+
     public ResultSet executeSelect()
     {
         try {
             rs = pstm.executeQuery();
+
         }catch (Exception ex){
+
             ex.printStackTrace();
         }
         return rs;
     }
 
     //permet d'exécuter les requete de type Update
+
     public  int executeMaj()
     {
         try {
@@ -65,6 +80,7 @@ public class DB
     }
 
     // fonction qui permet de fermer la connection à la base donnée
+
     public void closeConnection()
     {
         try {
@@ -75,7 +91,8 @@ public class DB
         }
     }
 
-    // fonction nous permet de passer des valeurs avant de l'exécuter
+    // fonction nous permet de passer des valeurs avant de l'exécuter et pstm doit etre visible à distance
+
     public PreparedStatement getPstm()
     {
         return pstm;

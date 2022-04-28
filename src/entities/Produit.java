@@ -4,10 +4,8 @@ public class Produit {
 
     public int idP;
     public String nomProduit;
-    public String  categorie;
     public String codeProduit;
     public String descriptionP;
-
     public String prix;
     public String dateCreation;
     public String dateExpiration;
@@ -17,10 +15,10 @@ public class Produit {
         super();
     }
 
-    public Produit(int idP, String nomProduit, String categorie, String codeProduit, String descriptionP, String prix, String dateCreation, String dateExpiration) {
+    public Produit(int idP, String nomProduit,String codeProduit, String descriptionP, String prix, String dateCreation, String dateExpiration) {
         this.idP = idP;
         this.nomProduit = nomProduit;
-        this.categorie = categorie;
+
         this.codeProduit = codeProduit;
         this.descriptionP = descriptionP;
         this.prix = prix;
@@ -42,14 +40,6 @@ public class Produit {
 
     public void setNomProduit(String nomProduit) {
         this.nomProduit = nomProduit;
-    }
-
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
     }
 
     public String getCodeProduit() {
